@@ -28,7 +28,7 @@ class Problem1 {
         }
 
         public void makeNum() throws PageOrderException{
-            if((left>=1 && left<=399)|| left%2==1 || left+1!=right) {
+            if((left<1 || left>399)|| left%2==0 || left+1!=right) {
                 throw new PageOrderException("예외사항 발생");
             }
             max_num = Math.max(sum(left),sum(right));
