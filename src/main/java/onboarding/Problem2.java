@@ -8,6 +8,8 @@ public class Problem2 {
 
         Deque<String> queue = new ArrayDeque<>();
 
+        queue.addFirst(cryptogram.substring(cryptogram.length()-1,cryptogram.length()));
+        cryptogram = cryptogram.substring(0,cryptogram.length()-1);
 
         return answer;
     }
