@@ -37,7 +37,36 @@ class Problem1 {
     }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        Gamer po = new Gamer();
+        Gamer cr = new Gamer();
 
+        po.left = pobi.get(0);
+        po.right = pobi.get(1);
+        cr.left = crong.get(0);
+        cr.right = crong.get(1);
+
+        try{
+            po.makeNum();
+            cr.makeNum();
+        }catch(PageOrderException e){
+            String message = e.getMessage();
+            e.printStackTrace();
+            answer = -1;
+            return answer;
+        }
+
+        if (po.max_num>cr.max_num){
+            answer = 1;
+        }
+        else if (po.max_num<cr.max_num){
+            answer = 2;
+        }
+        else if (po.max_num==cr.max_num){
+            answer = 0;
+        }
+        else{
+            answer = -1;
+        }
 
         return answer;
     }
