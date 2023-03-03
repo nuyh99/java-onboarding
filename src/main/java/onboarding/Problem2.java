@@ -23,6 +23,10 @@ public class Problem2 {
             }
         }
 
+        while (!queue.isEmpty()){
+            answer+=queue.pop();
+        }
+
         return answer;
     }
 }
