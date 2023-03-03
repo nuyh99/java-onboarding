@@ -11,6 +11,18 @@ public class Problem2 {
         queue.addFirst(cryptogram.substring(cryptogram.length()-1,cryptogram.length()));
         cryptogram = cryptogram.substring(0,cryptogram.length()-1);
 
+        while(cryptogram.length()!=0){
+            String s = cryptogram.substring(cryptogram.length()-1,cryptogram.length());
+            cryptogram = cryptogram.substring(0,cryptogram.length()-1);
+
+            if (Objects.equals(s,queue.peekFirst())){
+                queue.pop();
+            }
+            else{
+                queue.addFirst(s);
+            }
+        }
+
         return answer;
     }
 }
