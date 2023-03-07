@@ -5,6 +5,24 @@ import java.util.stream.Collectors;
 
 public class Problem7 {
 
+    /*value값을 기준으로 정렬하되 같은 경우에는 key를 기준으로 정렬*/
+    public static HashMap<String, Integer> sortByValue(HashMap<String, Integer> hm){
+        HashMap<String, Integer> temp
+                = hm.entrySet()
+                .stream()
+                .sorted((k1,k2)
+                        ->k1.getKey().compareTo(
+                        k2.getKey()))
+                .sorted((i2, i1)
+                        -> i1.getValue().compareTo(
+                        i2.getValue()))
+
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue,
+                        (e1, e2) -> e1, LinkedHashMap::new));
+        return temp;
+    }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         ArrayList<String> answer = new ArrayList();
@@ -86,6 +104,23 @@ public class Problem7 {
             Result.put(entry.getKey(),Point.get(entry.getValue()));
         }
 
+        /*Result 해쉬맵을 value를 기준으로 정렬*/
+        Result=sortByValue(Result);
+
+        /*Result 해쉬맵을 순회하며 answer에 최대 상위 5개의 닉네임 추가*/
+        entries = Result.entrySet().iterator();
+        int limit = 0;
+        while (entries.hasNext()) {
+            if(limit>5){
+                break;
+            }
+            Map.Entry<String, Integer> entry = entries.next();
+            if(entry.getValue()>0){
+                answer.add(entry.getKey());
+                limit++;
+            }
+
+        }
 
 
         return answer;
