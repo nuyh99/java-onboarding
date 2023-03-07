@@ -79,6 +79,13 @@ public class Problem7 {
             }
         }
 
+        /*인덱스번호 - 포인트로 구성된 Point 해쉬맵을 닉네임 - 포인트 형식인 Result 해쉬맵으로 저장 */
+        Iterator<Map.Entry<String, Integer>> entries = Index.entrySet().iterator();
+        while (entries.hasNext()) {
+            Map.Entry<String, Integer> entry = entries.next();
+            Result.put(entry.getKey(),Point.get(entry.getValue()));
+        }
+
 
 
         return answer;
