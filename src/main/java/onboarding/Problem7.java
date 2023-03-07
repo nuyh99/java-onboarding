@@ -42,6 +42,26 @@ public class Problem7 {
         /*user의 친구목록은 따로생성*/
         ArrayList<String> UserFriend = (ArrayList<String>) FriendList[Index.get(user)].clone();
 
+        /*함께하는 친구에 대한 Point부여*/
+        for(int i = 0;i<idx;i++){
+            if(i==Index.get(user)){
+                continue;
+            }
+            for(int j = 0;j<FriendList[i].size();j++){
+                for(int z =0;z<UserFriend.size();z++){
+                    if (Index.get(UserFriend.get(z))==i){
+                        Point.put(i,-1);
+                        break;
+                    }
+                    if (FriendList[i].get(j)==UserFriend.get(z)){
+                        int newScore = Point.get(i)+10;
+                        Point.put(i,newScore);
+                    }
+                }
+            }
+        }
+
+
 
         return answer;
     }
