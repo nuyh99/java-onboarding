@@ -82,7 +82,6 @@ public class Problem7 {
         /*방문횟수에 따른 포인트 부여*/
         for (int i = 0;i< visitors.size();i++){
             String vst = visitors.get(i);
-            System.out.println(i+"vst:"+vst+";"+Point.get(Index.get(vst)));
             if (Index.get(vst) == null) {
                 Point.put(idx, 1);
                 Index.put(vst,idx++);
