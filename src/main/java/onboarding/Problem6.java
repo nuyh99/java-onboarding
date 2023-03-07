@@ -33,6 +33,18 @@ public class Problem6 {
         check = init(check,forms.size());
 
 
+        for(int i=0;i<forms.size()-1;i++){
+            String s = forms.get(i).get(1);
+            for(int j=i+1;j<forms.size();j++){
+                String t = forms.get(j).get(1);
+                if (compare(s,t)==0){
+                    check.set(i,1);
+                    check.set(j,1);
+                }
+            }
+        }
+
+
         return answer;
 
     }
