@@ -44,8 +44,22 @@ public class Problem6 {
             }
         }
 
+        for(int i =0;i<forms.size();i++) {
+            if (check.get(i) == 1) {
+                String mail = forms.get(i).get(0);
+                int idx = mail.indexOf("@");
 
-        return answer;
+                String id = mail.substring(0, idx);
+                answer.add(id);
+            }
+        }
+
+        Collections.sort(answer);
+        Stream<String> stream = answer.stream();
+        List nList = stream.map(s->s.concat("@email.com"))
+                .collect(Collectors.toList());
+
+        return nList;
 
     }
 }
